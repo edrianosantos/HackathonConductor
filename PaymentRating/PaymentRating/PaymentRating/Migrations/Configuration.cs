@@ -9,7 +9,7 @@ namespace PaymentRating.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(PaymentRating.Context.BancoContext context)

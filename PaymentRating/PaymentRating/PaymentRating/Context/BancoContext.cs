@@ -16,10 +16,14 @@ namespace PaymentRating.Context
         }
 
         public DbSet<Avaliacao> Avaliacoes { get; set; }
+        public DbSet<MeiosPagamentos> MeiosPagamentos { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new AvaliacaoMapping());
+            modelBuilder.Configurations.Add(new MeiosPagamentosMapping());
+            modelBuilder.Configurations.Add(new UsuarioMapping());
         }
     }
 }
