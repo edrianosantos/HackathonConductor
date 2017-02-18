@@ -10,7 +10,10 @@ namespace PaymentRating.Context
 {
     public class BancoContext : DbContext
     {
-        
+        public BancoContext() : base("PaymentRating")
+        {
+            //throw new NotImplementedException();
+        }
 
         public DbSet<Avaliacao> Avaliacoes { get; set; }
 

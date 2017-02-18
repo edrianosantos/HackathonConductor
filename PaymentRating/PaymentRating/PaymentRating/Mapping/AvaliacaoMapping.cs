@@ -13,7 +13,11 @@ namespace PaymentRating.Mapping
         public AvaliacaoMapping()
         {
             this.ToTable("Avaliacoes");
-            this.Property(t => t.Id).HasColumnName("Id");
+            this.HasKey(x => x.Id);
+            this.Property(x => x.Comentario).IsRequired().HasMaxLength(300);
+            this.Property(x => x.Sugestao).HasMaxLength(300);
+            this.HasRequired(x => x.MeioPagamento).WithMany(x => x.Avaliacoes).HasForeignKey(t => t.IdMeioPagamento).WillCascadeOnDelete(false);
+            this.HasRequired(x => x.Usuario).WithMany(x => x.Avaliacoes).HasForeignKey(t => t.IdUsuario).WillCascadeOnDelete(false);
         }
     }
 }
