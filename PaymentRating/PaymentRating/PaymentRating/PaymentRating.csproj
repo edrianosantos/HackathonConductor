@@ -158,7 +158,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context\BancoContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAO\AvaliacaoDAO.cs" />
     <Compile Include="DAO\DAO.cs" />
+    <Compile Include="DAO\MeiosPagamentosDAO.cs" />
+    <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
