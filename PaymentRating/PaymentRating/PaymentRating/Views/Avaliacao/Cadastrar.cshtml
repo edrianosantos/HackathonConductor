@@ -1,12 +1,105 @@
-﻿@model PaymentRating.Models.Avaliacao
+﻿@using System.Collections.Concurrent
+@model PaymentRating.Models.Avaliacao
 @{
     ViewBag.Title = "Cadastrar Avaliacao";
     var pagamentos = ViewBag.Pagamentos as List<PaymentRating.Models.MeiosPagamentos>;
 }
 
+@section AddToHead{
+
+    <style type="text/css">
+        body {
+            padding-top: 70px;
+        }
+
+        .btn-grey {
+            background-color: #D8D8D8;
+            color: #FFF;
+        }
+
+        .rating-block {
+            background-color: #FAFAFA;
+            border: 1px solid #EFEFEF;
+            padding: 15px 15px 20px 15px;
+            border-radius: 3px;
+        }
+
+        .bold {
+            font-weight: 700;
+        }
+
+        .padding-bottom-7 {
+            padding-bottom: 7px;
+        }
+
+        .review-block {
+            background-color: #FAFAFA;
+            border: 1px solid #EFEFEF;
+            padding: 15px;
+            border-radius: 3px;
+            margin-bottom: 15px;
+        }
+
+        .review-block-name {
+            font-size: 12px;
+            margin: 10px 0;
+        }
+
+        .review-block-date {
+            font-size: 12px;
+        }
+
+        .review-block-rate {
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .review-block-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .review-block-description {
+            font-size: 13px;
+        }
+    </style>
+}
+
+
 @using (Html.BeginForm("CadastrarRequest", "Avaliacao", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-    <hr />
+    <hr/>
+    <input type="hidden" name="nota" id="nota" value="">
+    <div class="form-group">
+        <label class="col-md-2 control-label">Notas</label>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="rating-block">
+                        <h4>Avaliar Meio de Pagamento</h4>
+                        <h2 class="bold padding-bottom-7" id="valor">4 <small>/ 5</small></h2>
+                        <button type="button" onclick="setaNota('1')" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" onclick="setaNota('2')" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" onclick="setaNota('3')" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" onclick="setaNota('4')" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" onclick="setaNota('5')" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(m => m.IdMeioPagamento, "Meio de Pagamento", new { @class = "col-md-2 control-label" })
@@ -18,8 +111,7 @@
                 {
                     meiosPagamentos.Add(new SelectListItem { Text = pag.Descricao.ToString(), Value = pag.Id.ToString() });
                 }
-
-                @Html.DropDownListFor(c => pagamentos, meiosPagamentos, new { @class = "form-control", id = "IdMeioPagamento" })
+                @Html.DropDownListFor(c => c.IdMeioPagamento, meiosPagamentos, new { @class = "form-control", id = "IdMeioPagamento" })
             }
         </div>
     </div>
@@ -47,7 +139,8 @@
                     </div>
                     <div class="col-md-10">
                         <div class="checkbox left-checkbox control-label">
-                            <input type="checkbox" value="" class="" id="Recomendar">
+                            @*<input type="checkbox" checked="checked" value="false" id="Recomendar" name="Recomendar">*@
+                            @Html.EditorFor(x => x.Recomendar);
                         </div>
                     </div>
                 </div>
@@ -60,5 +153,13 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        
+        function setaNota($nota) {
+            document.getElementById("valor").innerHTML = "<h2 class='bold padding-bottom-7' id='nota'>" + $nota + " <small>/ 5</small></h2>";
+            $('#nota').val($nota);
+            //alert($nota);
+        }
+    </script>
 }
 

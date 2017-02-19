@@ -9,6 +9,11 @@ namespace PaymentRating.DAO
 {
     public class AvaliacaoDAO : DAO<Avaliacao>
     {
-        
+        public void SalvarAvaliacao(Avaliacao avaliacao)
+        {
+            Adicionar(avaliacao);
+            Salvar();
+        }
+
     }
 }
