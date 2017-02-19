@@ -4,8 +4,9 @@
     var pagamentos = ViewBag.Pagamentos as List<PaymentRating.Models.MeiosPagamentos>;
 }
 
-@using (Html.BeginForm("Cadastrar", "Avaliacao", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("CadastrarRequest", "Avaliacao", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
+    <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(m => m.IdMeioPagamento, "Meio de Pagamento", new { @class = "col-md-2 control-label" })
@@ -20,7 +21,6 @@
 
                 @Html.DropDownListFor(c => pagamentos, meiosPagamentos, new { @class = "form-control", id = "IdMeioPagamento" })
             }
-
         </div>
     </div>
 
@@ -32,7 +32,6 @@
                     </div>
                 </div>
 
-                @Html.ValidationSummary("", new { @class = "text-danger" })
                 <div class="form-group">
                     @Html.LabelFor(m => m.Sugestao, "Sugestão", new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
@@ -41,16 +40,20 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.Label("Recomendar", new { @class = "col-md-2 control-label" })
-                    <div class="col-md-1">
-                        @Html.CheckBoxFor(m => m.Recomendar, new { @class = "form-control" })
+                    <div class="col-md-2  control-label">
+                        <label for="Recomendar">
+                            Recomendar
+                        </label>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="checkbox left-checkbox control-label">
+                            <input type="checkbox" value="" class="" id="Recomendar">
+                        </div>
                     </div>
                 </div>
-                <div class="form-group col-md-2">
-                </div>
                 <div class="form-group">
-                    <div class="col-md-4">
-                        <input type="submit" class="btn btn-default pull-right" value="Comentar" />
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-default" value="Cadastrar" />
                     </div>
                 </div>
                 }

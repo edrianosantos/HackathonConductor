@@ -21,15 +21,13 @@ namespace PaymentRating.Controllers
         [HttpGet]
         public ActionResult Cadastrar()
         {
+            ViewBag.Pagamentos  = new DAO.MeiosPagamentosDAO().GetMeiosPagamentos();
             return View();
         }
 
         [HttpPost]
-        public ActionResult CadastrarRequest(string comentario)
+        public ActionResult CadastrarRequest(string meioPag, string comentario, string sugestao, string Recomendar)
         {
-            var meiosPagamentos = new MeiosPagamentosDAO().GetMeiosPagamentos();
-
-            ViewBag.Pagamentos = meiosPagamentos;
 
             return RedirectToAction("Index", "Avaliacao");
         }
