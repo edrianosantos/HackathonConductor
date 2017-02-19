@@ -160,6 +160,7 @@
     <Compile Include="Controllers\AvaliacaoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RankingController.cs" />
     <Compile Include="DAO\AvaliacaoDAO.cs" />
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\MeiosPagamentosDAO.cs" />
@@ -224,6 +225,7 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Avaliacao\Index.cshtml" />
     <Content Include="Views\Avaliacao\Cadastrar.cshtml" />
+    <Content Include="Views\Ranking\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

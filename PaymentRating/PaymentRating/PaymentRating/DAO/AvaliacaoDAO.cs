@@ -9,6 +9,6 @@ namespace PaymentRating.DAO
 {
     public class AvaliacaoDAO : DAO<Avaliacao>
     {
-
+        
     }
 }

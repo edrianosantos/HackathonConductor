@@ -24,11 +24,25 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Sobre", "About", "Home")</li>
+                    <li>@Html.ActionLink("Início", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Ranking", "Index", "Ranking")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Avaliação</a>
+                        <div class="dropdown-content">
+                            <a href="@Url.Action("Index", "Avaliacao")">Avaliações</a>
+                            <a href="@Url.Action("Cadastrar", "Avaliacao")">Cadastrar</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Usuário</a>
+                        <div class="dropdown-content">
+                            <a href="@Url.Action("Login", "Login")">Login</a>
+                            <a href="@Url.Action("Cadastro", "Login")">Cadastrar</a>
+                        </div>
+                    </li>
                     <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Avaliar", "Index", "Avaliacao")</li>
-                    <li>@Html.ActionLink("Cadastro", "Cadastro", "Login")</li>
+                    @*<li>@Html.ActionLink("Cadastro", "Cadastro", "Login")</li>
                     <li>@Html.ActionLink("Login", "Login", "Login")</li>
                     <li class="dropdown">
                         <a href="#" class="dropbtn">Dropdown</a>
@@ -38,6 +52,7 @@
                             <a href="#">Link 3</a>
                         </div>
                     </li>
+                    *@
                 </ul>
             </div>
         </div>
