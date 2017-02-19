@@ -1,0 +1,61 @@
+﻿@model PaymentRating.Models.Avaliacao
+@{
+    ViewBag.Title = "Cadastrar Avaliacao";
+    var pagamentos = ViewBag.Pagamentos as List<PaymentRating.Models.MeiosPagamentos>;
+}
+
+@using (Html.BeginForm("Cadastrar", "Avaliacao", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.IdMeioPagamento, "Meio de Pagamento", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @{
+                var meiosPagamentos = new List<SelectListItem>();
+
+                foreach (var pag in pagamentos)
+                {
+                    meiosPagamentos.Add(new SelectListItem { Text = pag.Descricao.ToString(), Value = pag.Id.ToString() });
+                }
+
+                @Html.DropDownListFor(c => pagamentos, meiosPagamentos, new { @class = "form-control", id = "IdMeioPagamento" })
+            }
+
+        </div>
+    </div>
+
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Comentario, "Comentário", new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(m => m.Comentario, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Sugestao, "Sugestão", new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(m => m.Sugestao, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Recomendar", new { @class = "col-md-2 control-label" })
+                    <div class="col-md-1">
+                        @Html.CheckBoxFor(m => m.Recomendar, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group col-md-2">
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <input type="submit" class="btn btn-default pull-right" value="Comentar" />
+                    </div>
+                </div>
+                }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

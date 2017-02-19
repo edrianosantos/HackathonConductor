@@ -25,71 +25,79 @@
                     <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Avaliar", "Index", "Avaliacao")</li>
                     <li>@Html.ActionLink("Cadastro", "Cadastro", "Login")</li>
+                    <li>@Html.ActionLink("Login", "Login", "Login")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Dropdown</a>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
-<div class="container body-content">
-    <section class="row content">
-        <!-- Modal -->
-        @*<div class="modal fade" id="exitModal" tabindex="-1" role="dialog" aria-labelledby="exitModal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">
-                            <span aria-hidden="true">x</span><span class="sr-only">Close</span>
-                        </button>
-                        <h1> <span>›</span> Deseja realmente sair?</h1>
+    <div class="container">
+        <section class="row content">
+            <!-- Modal -->
+            @*<div class="modal fade" id="exitModal" tabindex="-1" role="dialog" aria-labelledby="exitModal" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">x</span><span class="sr-only">Close</span>
+                                </button>
+                                <h1> <span>›</span> Deseja realmente sair?</h1>
+                            </div>
+                            <div class="modal-body">
+                                <a href="#" class="btn btn-lg btn-default" data-dismiss="modal">Cancelar</a>
+                                <a href="@Url.Action("LogOut", "Login", new { area = "" })" class="btn btn-lg btn-info">Sair</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <a href="#" class="btn btn-lg btn-default" data-dismiss="modal">Cancelar</a>
-                        <a href="@Url.Action("LogOut", "Login", new { area = "" })" class="btn btn-lg btn-info">Sair</a>
-                    </div>
+                </div>*@
+            @if (TempData["msg-sucesso"] != null)
+            {
+                <div class="alert alert-success fade in">
+                    <button class="close" data-dismiss="alert">×</button>
+                    <strong>@TempData["msg-sucesso"]</strong>
                 </div>
-            </div>
-        </div>*@
-        @if (TempData["msg-sucesso"] != null)
+            }
+
+            @if (TempData["msg-error"] != null)
             {
-            <div class="alert alert-success fade in">
-                <button class="close" data-dismiss="alert">×</button>
-                <strong>@TempData["msg-sucesso"]</strong>
-            </div>
-        }
+                <div class="alert alert-danger fade in">
+                    <button class="close" data-dismiss="alert">×</button>
+                    <strong>@TempData["msg-error"]</strong>
+                </div>
+            }
 
-        @if (TempData["msg-error"] != null)
+            @if (TempData["msg-error-categoria"] != null)
             {
-            <div class="alert alert-danger fade in">
-                <button class="close" data-dismiss="alert">×</button>
-                <strong>@TempData["msg-error"]</strong>
-            </div>
-        }
+                <div class="alert alert-danger fade in">
+                    <button class="close" data-dismiss="alert">×</button>
+                    <strong>@TempData["msg-error-categoria"]</strong>
+                </div>
+            }
 
-        @if (TempData["msg-error-categoria"] != null)
+            @if (TempData["msg-error-status"] != null)
             {
-            <div class="alert alert-danger fade in">
-                <button class="close" data-dismiss="alert">×</button>
-                <strong>@TempData["msg-error-categoria"]</strong>
-            </div>
-        }
+                <div class="alert alert-warning fade in">
+                    <button class="close" data-dismiss="alert">×</button>
+                    <strong>@TempData["msg-error-status"]</strong>
+                </div>
+            }
 
-        @if (TempData["msg-error-status"] != null)
-            {
-            <div class="alert alert-warning fade in">
-                <button class="close" data-dismiss="alert">×</button>
-                <strong>@TempData["msg-error-status"]</strong>
-            </div>
-        }
-
-    </section>
-
-    @RenderBody()
-    <hr/>
-    <div class="navbar-fixed-bottom text-center">
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Code System</p>
-        </footer>
+        </section>
+        @RenderBody()
+        <hr />
+        <div class="navbar-fixed-bottom text-center">
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Code System</p>
+            </footer>
+        </div>
     </div>
-</div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

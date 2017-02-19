@@ -13,17 +13,24 @@ namespace PaymentRating.Controllers
         // GET: Avaliacao
         public ActionResult Index()
         {
-            var meiosPagamentos = new MeiosPagamentosDAO().GetMeiosPagamentos();
+            return View();
+        }
 
-            ViewBag.Pagamentos = meiosPagamentos;
-
+        [HttpGet]
+        public ActionResult Cadastrar()
+        {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Cadastrar(Avaliacao avaliacao)
+        public ActionResult CadastrarRequest(string comentario)
         {
+            var meiosPagamentos = new MeiosPagamentosDAO().GetMeiosPagamentos();
+
+            ViewBag.Pagamentos = meiosPagamentos;
+
             return RedirectToAction("Index", "Avaliacao");
         }
+
     }
 }
