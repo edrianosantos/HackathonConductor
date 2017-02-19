@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using PaymentRating.Models;
+using PaymentRating.DAO;
 
 namespace PaymentRating.Controllers
 {
@@ -19,7 +20,27 @@ namespace PaymentRating.Controllers
         [HttpPost]
         public ActionResult LoginResult(string email, string senha)
         {
-            return View();
+            if(string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha))
+            {
+                TempData["msg-error"] += "Preencha todos os campos!";
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                var md5 = Util.MD5.GetMD5Hash(senha);
+                var usuario = new UsuarioDAO().GetUsuarioLogin(email, md5);
+
+                if (usuario != null)
+                {
+                    Session["usuario"] = usuario;
+
+                    TempData["msg-sucesso"] += "Login efetuado com sucesso!";
+                    return RedirectToAction("Index", "Avaliacao");
+                }
+
+                TempData["msg-error"] += "Usuário ou senha incorreta!";
+                return RedirectToAction("Login");
+            }
         }
 
         [HttpGet]
@@ -38,7 +59,7 @@ namespace PaymentRating.Controllers
             }
 
             var md5 = Util.MD5.GetMD5Hash(senha);
-            var user = new Usuario() {Nome = nome, Email = email, Senha = md5};
+            var user = new Usuario() { Nome = nome, Email = email, Senha = md5 };
             new DAO.UsuarioDAO().SalvarUsuario(user);
             TempData["msg-sucesso"] += "Preencha todos os campos!";
 

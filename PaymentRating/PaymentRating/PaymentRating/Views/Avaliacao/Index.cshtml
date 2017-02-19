@@ -1,60 +1,149 @@
-﻿@model PaymentRating.Models.Avaliacao
+﻿@model IEnumerable<PaymentRating.Models.Avaliacao>
 @{
-    ViewBag.Title = "Index";
-    var pagamentos = ViewBag.Pagamentos as List<PaymentRating.Models.MeiosPagamentos>;
+    ViewBag.Title = "Avaliações";
 }
 
-@using (Html.BeginForm("Cadastrar", "Avaliacao", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.IdMeioPagamento, "Meio de Pagamento", new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @{
-                var meiosPagamentos = new List<SelectListItem>();
+﻿@section AddToHead{
 
-                foreach (var pag in pagamentos)
-                {
-                    meiosPagamentos.Add(new SelectListItem { Text = pag.Descricao.ToString(), Value = pag.Id.ToString() });
-                }
+    <style type="text/css">
+        body {
+            margin-top: 20px;
+        }
 
-                @Html.DropDownListFor(c => pagamentos, meiosPagamentos, new { @class = "form-control", id= "IdMeioPagamento" })
+        .glyphicon {
+            margin-right: 5px;
+        }
+
+        .section-box h2 {
+            margin-top: 0px;
+        }
+
+            .section-box h2 a {
+                font-size: 15px;
             }
 
-        </div>
+        .glyphicon-heart {
+            color: #e74c3c;
+        }
+
+        .glyphicon-comment {
+            color: #27ae60;
+        }
+
+        .separator {
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+
+        .section-box hr {
+            margin-top: 0;
+            margin-bottom: 5px;
+            border: 0;
+            border-top: 1px solid rgb(199, 199, 199);
+        }
+    </style>
+}
+
+<div class="container">
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-10">
+                <div class="well well-sm">
+                    <div class="row">
+                        <div class="col-xs-3 col-md-2 text-center">
+                            <img src="https://cdn4.iconfinder.com/data/icons/linecon/512/photo-128.png" alt="bootsnipp"
+                                 class="img-rounded img-responsive" />
+                            <h6><strong>@item.Usuario.Nome</strong></h6>
+                        </div>
+                        <div class="col-xs-9 col-md-9 section-box">
+                            <h2>
+                                @item.Comentario                               
+                            </h2>
+                            <p>
+                                @item.Sugestao
+                            </p>
+                            <h4>Meio de Pagamento: @item.MeioPagamento.Descricao</h4>
+                            <hr />
+                            <div class="row rating-desc">
+                                <div class="col-md-12">
+                                    @for (int i = 1; i <= @item.Nota; i++)
+                                    {
+                                        <span class="glyphicon glyphicon-star"></span>
+                                    }
+                                    <span class="glyphicon glyphicon-calendar"></span>(@item.Data)
+                                </div>
+                            </div>
+                            <div class="row col-md-12">
+                                <br>
+                                    @string.Format("Recomenda esse meio de pagamento: {0}", @item.Recomendar ? "Sim" : "Não")                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
     </div>
+</div>
 
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Comentario, "Comentário", new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextAreaFor(m => m.Comentario, new { @class = "form-control" })
-                    </div>
-                </div>
+@*
 
-                @Html.ValidationSummary("", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Sugestao, "Sugestão", new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextAreaFor(m => m.Sugestao, new { @class = "form-control" })
-                    </div>
-                </div>
+    @using (Html.BeginForm("Cadastrar", "Avaliacao", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.IdMeioPagamento, "Meio de Pagamento", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @{
+                    var meiosPagamentos = new List<SelectListItem>();
 
-                <div class="form-group">
-                    @Html.Label("Recomendar", new { @class = "col-md-2 control-label" })
-                    <div class="col-md-1">
-                        @Html.CheckBoxFor(m => m.Recomendar, new { @class = "form-control" })
-                    </div>
-                </div>
-                <div class="form-group col-md-2">
-                </div>
-                <div class="form-group">
-                    <div class="col-md-4">
-                        <input type="submit" class="btn btn-default pull-right" value="Comentar" />
-                    </div>
-                </div>
+                    foreach (var pag in pagamentos)
+                    {
+                        meiosPagamentos.Add(new SelectListItem { Text = pag.Descricao.ToString(), Value = pag.Id.ToString() });
+                    }
+
+                    @Html.DropDownListFor(c => pagamentos, meiosPagamentos, new { @class = "form-control", id= "IdMeioPagamento" })
                 }
+
+            </div>
+        </div>
+
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Comentario, "Comentário", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(m => m.Comentario, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Sugestao, "Sugestão", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(m => m.Sugestao, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Recomendar", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-1">
+                            @Html.CheckBoxFor(m => m.Recomendar, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group col-md-2">
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <input type="submit" class="btn btn-default pull-right" value="Comentar" />
+                        </div>
+                    </div>
+                    }
+
+*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

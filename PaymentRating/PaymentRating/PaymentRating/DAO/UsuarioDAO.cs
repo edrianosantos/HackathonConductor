@@ -15,5 +15,10 @@ namespace PaymentRating.DAO
             Salvar();
         }
 
+        public Usuario GetUsuarioLogin(string email, string senha)
+        {
+            return db.Usuario.Where(x => x.Email.Equals(email) && x.Senha.Equals(senha)).FirstOrDefault();
+        }
+
     }
 }

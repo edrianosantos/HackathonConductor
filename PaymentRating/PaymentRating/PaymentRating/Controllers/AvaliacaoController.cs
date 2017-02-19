@@ -13,11 +13,9 @@ namespace PaymentRating.Controllers
         // GET: Avaliacao
         public ActionResult Index()
         {
-            var meiosPagamentos = new MeiosPagamentosDAO().GetMeiosPagamentos();
-
-            ViewBag.Pagamentos = meiosPagamentos;
-
-            return View();
+            var avaliacoes = new AvaliacaoDAO().Listar();
+       
+            return View(avaliacoes);
         }
 
         [HttpPost]
@@ -25,5 +23,7 @@ namespace PaymentRating.Controllers
         {
             return RedirectToAction("Index", "Avaliacao");
         }
+
+        
     }
 }
