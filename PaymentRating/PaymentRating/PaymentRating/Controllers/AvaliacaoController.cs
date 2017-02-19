@@ -14,6 +14,8 @@ namespace PaymentRating.Controllers
         public ActionResult Index()
         {
             var avaliacoes = new AvaliacaoDAO().Listar();
+            //var lista = new List<Avaliacao>();
+            //lista.AddRange(lista);
        
             return View(avaliacoes);
         }
