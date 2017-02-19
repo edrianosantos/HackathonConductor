@@ -112,7 +112,7 @@ C:\Users\slimv\Desktop\HackathonConductor\PaymentRating\PaymentRating\PaymentRat
 C:\Users\slimv\Desktop\HackathonConductor\PaymentRating\PaymentRating\PaymentRating\bin\Antlr3.Runtime.pdb
 C:\Users\slimv\Desktop\HackathonConductor\PaymentRating\PaymentRating\PaymentRating\bin\Newtonsoft.Json.xml
 C:\Users\slimv\Desktop\HackathonConductor\PaymentRating\PaymentRating\PaymentRating\obj\Debug\PaymentRating.csprojResolveAssemblyReference.cache
-C:\Users\slimv\Desktop\HackathonConductor\PaymentRating\PaymentRating\PaymentRating\obj\Debug\PaymentRating.Migrations.Inicio.resources
-C:\Users\slimv\Desktop\HackathonConductor\PaymentRating\PaymentRating\PaymentRating\obj\Debug\PaymentRating.csproj.GenerateResource.Cache
 C:\Users\slimv\Desktop\HackathonConductor\PaymentRating\PaymentRating\PaymentRating\obj\Debug\PaymentRating.dll
 C:\Users\slimv\Desktop\HackathonConductor\PaymentRating\PaymentRating\PaymentRating\obj\Debug\PaymentRating.pdb
+C:\Users\slimv\Desktop\HackathonConductor\PaymentRating\PaymentRating\PaymentRating\obj\Debug\PaymentRating.Migrations.Inicio.resources
+C:\Users\slimv\Desktop\HackathonConductor\PaymentRating\PaymentRating\PaymentRating\obj\Debug\PaymentRating.csproj.GenerateResource.Cache

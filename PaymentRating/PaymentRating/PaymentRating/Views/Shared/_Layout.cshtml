@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top cordafonte" style="background-color: #079616;">
+    <div class="navbar navbar-inverse navbar-fixed-top corfonte" style="background-color: rgb(30, 74, 30);">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -29,13 +29,67 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
+<div class="container body-content">
+    <section class="row content">
+        <!-- Modal -->
+        @*<div class="modal fade" id="exitModal" tabindex="-1" role="dialog" aria-labelledby="exitModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">x</span><span class="sr-only">Close</span>
+                        </button>
+                        <h1> <span>›</span> Deseja realmente sair?</h1>
+                    </div>
+                    <div class="modal-body">
+                        <a href="#" class="btn btn-lg btn-default" data-dismiss="modal">Cancelar</a>
+                        <a href="@Url.Action("LogOut", "Login", new { area = "" })" class="btn btn-lg btn-info">Sair</a>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+        @if (TempData["msg-sucesso"] != null)
+            {
+            <div class="alert alert-success fade in">
+                <button class="close" data-dismiss="alert">×</button>
+                <strong>@TempData["msg-sucesso"]</strong>
+            </div>
+        }
+
+        @if (TempData["msg-error"] != null)
+            {
+            <div class="alert alert-danger fade in">
+                <button class="close" data-dismiss="alert">×</button>
+                <strong>@TempData["msg-error"]</strong>
+            </div>
+        }
+
+        @if (TempData["msg-error-categoria"] != null)
+            {
+            <div class="alert alert-danger fade in">
+                <button class="close" data-dismiss="alert">×</button>
+                <strong>@TempData["msg-error-categoria"]</strong>
+            </div>
+        }
+
+        @if (TempData["msg-error-status"] != null)
+            {
+            <div class="alert alert-warning fade in">
+                <button class="close" data-dismiss="alert">×</button>
+                <strong>@TempData["msg-error-status"]</strong>
+            </div>
+        }
+
+    </section>
+
+    @RenderBody()
+    <hr/>
+    <div class="navbar-fixed-bottom text-center">
         <footer>
             <p>&copy; @DateTime.Now.Year - Code System</p>
         </footer>
     </div>
+</div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

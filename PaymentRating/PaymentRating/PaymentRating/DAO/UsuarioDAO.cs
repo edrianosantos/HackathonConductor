@@ -9,6 +9,11 @@ namespace PaymentRating.DAO
 {
     public class UsuarioDAO : DAO<Usuario>
     {
+        public void SalvarUsuario(Usuario user)
+        {
+            Adicionar(user);
+            Salvar();
+        }
 
     }
 }

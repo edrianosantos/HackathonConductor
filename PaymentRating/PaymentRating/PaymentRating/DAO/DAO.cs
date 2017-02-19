@@ -9,8 +9,7 @@ namespace PaymentRating.DAO
     public abstract class DAO<TEntity> : IDisposable where TEntity : class
     {
         protected BancoContext db = new BancoContext();
-        public void Adicionar(TEntity objeto)
-        { db.Set<TEntity>().Add(objeto); }
+        public void Adicionar(TEntity objeto) { db.Set<TEntity>().Add(objeto); }
         public void Excluir(Func<TEntity, bool> predicate) { db.Set<TEntity>().Where(predicate).ToList().ForEach(del => db.Set<TEntity>().Remove(del)); }
         public void Atualizar(TEntity objeto) { db.Entry(objeto).State = System.Data.Entity.EntityState.Modified; }
         public void Salvar() { db.SaveChanges(); }
