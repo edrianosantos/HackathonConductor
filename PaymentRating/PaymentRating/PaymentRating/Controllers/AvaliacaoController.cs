@@ -18,12 +18,20 @@ namespace PaymentRating.Controllers
             return View(avaliacoes);
         }
 
-        [HttpPost]
-        public ActionResult Cadastrar(Avaliacao avaliacao)
+        [HttpGet]
+        public ActionResult Cadastrar()
         {
-            return RedirectToAction("Index", "Avaliacao");
+            return View();
         }
 
-        
+        [HttpPost]
+        public ActionResult CadastrarRequest(string comentario)
+        {
+            var meiosPagamentos = new MeiosPagamentosDAO().GetMeiosPagamentos();
+
+            ViewBag.Pagamentos = meiosPagamentos;
+
+            return RedirectToAction("Index", "Avaliacao");
+        }
     }
 }

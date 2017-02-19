@@ -223,6 +223,7 @@
     <Content Include="Views\Login\Cadastro.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Avaliacao\Index.cshtml" />
+    <Content Include="Views\Avaliacao\Cadastrar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
