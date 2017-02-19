@@ -9,24 +9,21 @@ namespace PaymentRating.DAO
 {
     public class MeiosPagamentosDAO : DAO<MeiosPagamentos>
     {
-        public void SetDadosIniciais()
+        public List<MeiosPagamentos> GetMeiosPagamentos()
         {
             var meiospagamentos = new List<MeiosPagamentos>();
 
-            meiospagamentos.Add(new MeiosPagamentos() { Descricao = "Nubank MasterCard", Ativo = true });
-            meiospagamentos.Add(new MeiosPagamentos() { Descricao = "HiperCard", Ativo = true });
-            meiospagamentos.Add(new MeiosPagamentos() { Descricao = "Visa", Ativo = true });
-            meiospagamentos.Add(new MeiosPagamentos() { Descricao = "American Express", Ativo = true });
-            meiospagamentos.Add(new MeiosPagamentos() { Descricao = "Elo", Ativo = true });
-            meiospagamentos.Add(new MeiosPagamentos() { Descricao = "Submarino MasterCard Internacional", Ativo = true });
-            meiospagamentos.Add(new MeiosPagamentos() { Descricao = "Saraiva Visa Internacional", Ativo = true });
-            meiospagamentos.Add(new MeiosPagamentos() { Descricao = "Petrobrás Visa Internacional", Ativo = true });
-            meiospagamentos.Add(new MeiosPagamentos() { Descricao = "Santander Free", Ativo = true });
+            meiospagamentos.Add(new MeiosPagamentos() { Id = 1, Descricao = "Nubank MasterCard", Ativo = true });
+            meiospagamentos.Add(new MeiosPagamentos() { Id = 2, Descricao = "HiperCard", Ativo = true });
+            meiospagamentos.Add(new MeiosPagamentos() { Id = 3, Descricao = "Visa", Ativo = true });
+            meiospagamentos.Add(new MeiosPagamentos() { Id = 4, Descricao = "American Express", Ativo = true });
+            meiospagamentos.Add(new MeiosPagamentos() { Id = 5, Descricao = "Elo", Ativo = true });
+            meiospagamentos.Add(new MeiosPagamentos() { Id = 6, Descricao = "Submarino MasterCard Internacional", Ativo = true });
+            meiospagamentos.Add(new MeiosPagamentos() { Id = 7, Descricao = "Saraiva Visa Internacional", Ativo = true });
+            meiospagamentos.Add(new MeiosPagamentos() { Id = 8, Descricao = "Petrobrás Visa Internacional", Ativo = true });
+            meiospagamentos.Add(new MeiosPagamentos() { Id = 9, Descricao = "Santander Free", Ativo = true });
 
-            foreach (var meio in meiospagamentos)
-            {
-                Adicionar(meio);
-            }
+            return meiospagamentos;
         }
     }
 }
