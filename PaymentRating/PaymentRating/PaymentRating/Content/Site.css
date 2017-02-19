@@ -61,3 +61,21 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.mycheckbox{
+  margin-top:5px;
+  margin-left:5px;
+}
+.mycheckboxdiv{
+   /*text-align:right;*/
+}
+
+.left-checkbox label {
+    text-align: right;
+    float: right;
+    font-weight: bold;    
+}
+
+.left-checkbox input[type=checkbox] {
+    /*margin-left: 14px;*/
+}
